@@ -5,10 +5,14 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Reporter<ArrayListList> implements Runnable{
-    ArrayList<Thread> threadArrayList = new ArrayList<>();
+public class Reporter implements Runnable{
+    ArrayList<SaveAsThread> threadArrayList = new ArrayList<>();
+    private Object SaveAsThread;
 
-    public void setThreadArrayList(ArrayList<Thread> threadArrayList) {
+    public Object getSaveAsTread(){
+        return SaveAsThread;
+    }
+    public void setThreadArrayList(ArrayList<SaveAsThread> threadArrayList) {
         this.threadArrayList=threadArrayList;
     }
 
@@ -18,8 +22,12 @@ public class Reporter<ArrayListList> implements Runnable{
         System.out.println(Thread.currentThread().getName() + " started");
         try(FileWriter writer = new FileWriter("Reporter.bin", false))
         {
+
             // запись всей строки
-            for (Thread j : threadArrayList) writer.write(j + ",");
+            for (SaveAsThread j : threadArrayList) {
+               Thread.currentThread().
+                       writer.write(k + ",");
+            }
 
             writer.flush();
         }

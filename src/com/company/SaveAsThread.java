@@ -10,6 +10,9 @@ public class SaveAsThread implements Runnable{
         this.intArray = intArray;
 
     }
+    public int[] getIntArray(){
+        return intArray;
+    }
     @Override
     public void run() {
         System.out.println(Thread.currentThread().getName() + " started");

@@ -19,13 +19,13 @@ public class Main {
         myThread2.start();
         Thread myThread3 = new Thread(new SaveAsThread(id3, intArray3), "SaveAsThread3");
         myThread3.start();
-        ArrayList<Thread> threadArrayList = new ArrayList<>();
+        ArrayList<SaveAsThread> threadArrayList = new ArrayList<>();
         threadArrayList.add(myThread1);
         threadArrayList.add(myThread2);
         threadArrayList.add(myThread3);
         Reporter reporter = new Reporter();
         reporter.setThreadArrayList(threadArrayList);
-        Thread reporterThread = new Thread(new Reporter());
+        Thread reporterThread = new Thread(new Reporter(), "ReporterThread");
         reporterThread.start();
 
 
