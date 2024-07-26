@@ -1,17 +1,13 @@
 package com.company;
-
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.List;
-
 public class Reporter implements Runnable{
-    ArrayList<SaveAsThread> threadArrayList = new ArrayList<>();
-    private Object SaveAsThread;
-
-    public Object getSaveAsTread(){
-        return SaveAsThread;
+    private  ArrayList<SaveAsThread> threadArrayList = new ArrayList<>();
+    Reporter(ArrayList<SaveAsThread> threadArrayList){
+        this.threadArrayList = threadArrayList;
     }
+
     public void setThreadArrayList(ArrayList<SaveAsThread> threadArrayList) {
         this.threadArrayList=threadArrayList;
     }
@@ -25,8 +21,11 @@ public class Reporter implements Runnable{
 
             // запись всей строки
             for (SaveAsThread j : threadArrayList) {
-               Thread.currentThread().
-                       writer.write(k + ",");
+                //j.start();
+                for (int k: j.getIntArray())
+                writer.write(k + ",");
+                writer.write("\n");
+
             }
 
             writer.flush();
